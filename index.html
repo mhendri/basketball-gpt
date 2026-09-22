@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101e36">
+  <meta name="description" content="Adult League Fall 2026 basketball schedule and game scores.">
+  <title>Adult League · Schedule & Scores</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><div class="header-inner"><span class="brand-mark" aria-hidden="true">AL</span><div><p class="eyebrow">FALL 2026 · BASKETBALL</p><h1>Adult League</h1></div><span class="season">SEPT — DEC</span></div></header>
+  <main>
+    <section class="section-heading"><div><p class="eyebrow">ON THE COURT</p><h2>Schedule & scores</h2></div><a class="source" href="https://docs.google.com/spreadsheets/d/1IBgQlW1lqmNIjhSQ8v4K33X-zyU2-1aoKHrIYrmLqWY/edit" target="_blank" rel="noopener noreferrer">League spreadsheet ↗</a></section>
+    <div class="toolbar"><div class="tabs" role="tablist" aria-label="Games"><button id="schedule-tab" role="tab" aria-selected="true" aria-controls="games" tabindex="0">Schedule</button><button id="results-tab" role="tab" aria-selected="false" aria-controls="games" tabindex="-1">Results</button></div><button id="refresh" class="refresh">Refresh data</button></div>
+    <p id="status" class="status" role="status">Loading league data…</p>
+    <div id="games" role="tabpanel" aria-labelledby="schedule-tab" tabindex="0"><p class="empty">Loading games…</p></div>
+    <footer><span>All dates are in 2026. Times shown as listed in the league sheet.</span><span id="count"></span></footer>
+  </main>
+</body>
+</html>

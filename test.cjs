@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {parseLeague}=require('./app.js');
+const data=require('./data.json');
+const parsed=parseLeague(data.rows);
+assert.equal(parsed.results.length,6);
+assert.equal(parsed.results.find(g=>g.teams.includes('Kaplan')&&g.date==='2026-09-17').note,'OT');
+assert.equal(parsed.schedule.find(g=>g.date==='2026-09-08'&&g.time==='8:30').result.scores[0],92);
+assert.equal(parsed.schedule.filter(g=>g.date==='2026-09-10'&&g.noGame).length,1);
+assert.equal(parsed.schedule.filter(g=>g.date==='2026-11-26'&&g.noGame).length,1);
+assert.equal(parsed.schedule.filter(g=>g.playoffs&&!g.noGame).length,10);
+assert.equal(parsed.schedule.find(g=>g.label==='Lerman Kaplan').teams,null);
+assert.ok(parsed.schedule.find(g=>g.label==='Friedman v Tann').teams.includes('Tannenbaum'));
+assert.equal(parsed.schedule.filter(g=>g.result).length,6);
+assert.throws(()=>parseLeague([['Unexpected format']]));
+console.log(`Passed: ${parsed.schedule.length} schedule entries, ${parsed.results.length} results; scores, aliases, holidays and playoffs validated.`);
